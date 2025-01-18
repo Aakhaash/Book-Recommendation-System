@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/recommend">Recommend</a></li>
+        </ul>
+    </nav>
+    <h1>Top 50 Popular Books</h1>
+    <div class="book-grid">
+        {% for book in books %}
+        <div class="book-card">
+            <img src="{{ book['Image-URL-M'] }}" alt="{{ book['Book-Title'] }}">
+            <h2>{{ book['Book-Title'] }}</h2>
+            <p>Author: {{ book['Book-Author'] }}</p>
+            <p>Ratings: {{ book['num-ratings'] }}</p>
+            <p>Average Rating: {{ book['avg-rating']|round(2) }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

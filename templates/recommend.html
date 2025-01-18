@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/recommend">Recommend</a></li>
+        </ul>
+    </nav>
+    <h1>Book Recommendation</h1>
+    <form method="POST" class="search-form">
+        <input type="text" name="book_name" placeholder="Enter a book name" required>
+        <button type="submit">Get Recommendations</button>
+    </form>
+    {% if books %}
+    <h2>Recommended Books:</h2>
+    <div class="book-grid">
+        {% for book in books %}
+        <div class="book-card">
+            <img src="{{ book['Image-URL-M'] }}" alt="{{ book['Book-Title'] }}">
+            <h2>{{ book['Book-Title'] }}</h2>
+            <p>Author: {{ book['Book-Author'] }}</p>
+            <p>ISBN: {{ book['ISBN'] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</body>
+</html>
