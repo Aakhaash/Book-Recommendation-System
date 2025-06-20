@@ -2,9 +2,9 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 
-books = pd.read_csv('./Datasets/Books.csv',low_memory=False)
-ratings = pd.read_csv('./Datasets/Ratings.csv')
-users = pd.read_csv('./Datasets/Users.csv')
+books = pd.read_csv('./Datasets/Books.csv',low_memory=False).sample(n=10000)
+ratings = pd.read_csv('./Datasets/Ratings.csv',low_memory=False).sample(n=50000)
+users = pd.read_csv('./Datasets/Users.csv',low_memory=False).sample(n=5000)
 
 # print(books.shape)
 # print(ratings.shape)
